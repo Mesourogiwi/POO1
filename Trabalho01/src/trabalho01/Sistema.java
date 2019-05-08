@@ -48,7 +48,7 @@ public class Sistema {
 
     public void executar() {
         String opcao, opcao1, nomeC, cpfC, codigoP, descricaoP, tipoP;
-        int contC = 0, contP = 0, taxaImport = 0;
+        int contC = 0, contP = 0, taxaImposto = 0, taxaImport = 0;
         float valorP = 0;
         Cliente c[] = new Cliente[MAXC];
         Produto p[] = new Produto[MAXP];
@@ -75,11 +75,16 @@ public class Sistema {
                                     valorP = Float.parseFloat(JOptionPane.showInputDialog("Introduza o valor do produto: "));
                                     tipoP = JOptionPane.showInputDialog("Introduza o tipo do produto (NACIONAL ou IMPORTADO): ");
                                     if (tipoP.equals("NACIONAL")){
-                                        taxaImport = Integer.parseInt(JOptionPane.showInputDialog("Introduza a taxa de impotacao (em %): "));
-                                        p[contP] = new ProdutoNacional(codigoP, descricaoP, valorP, tipoP, taxaImport);
+                                        taxaImposto = Integer.parseInt(JOptionPane.showInputDialog("Introduza a taxa de imposto (em %): "));
+                                        p[contP] = new ProdutoNacional(codigoP, descricaoP, valorP, tipoP, taxaImposto);
                                         contP++;
                                     }
-                                 
+                                    else{
+                                        taxaImposto = Integer.parseInt(JOptionPane.showInputDialog("Introduza a taxa de imposto (em %): "));
+                                        taxaImport = Integer.parseInt(JOptionPane.showInputDialog("Introduza a taxa de importacao (em %): "));
+                                        p[contP] = new ProdutoImportado (codigoP, descricaoP, valorP, tipoP, taxaImposto, taxaImport);
+                                        contP++;
+                                    }
                                 }
                                 break;
                         }
