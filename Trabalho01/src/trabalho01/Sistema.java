@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
  * @author Erick Yoshike
  */
 public class Sistema {
+    private int MAXC = 100; 
+    private int MAXP = 100;
 
     public String principal() {
         String principal = "MENU PRINCIPAL\n"
@@ -45,7 +47,11 @@ public class Sistema {
     }
 
     public void executar() {
-        String opcao, opcao1;
+        String opcao, opcao1, nomeC, cpfC, codigoP, descricaoP, tipoP;
+        int contC = 0, contP = 0, taxaImport = 0;
+        float valorP = 0;
+        Cliente c[] = new Cliente[MAXC];
+        Produto p[] = new Produto[MAXP];
 
         do {
             opcao = principal();
@@ -55,10 +61,26 @@ public class Sistema {
                         opcao1 = cadastrar();
                         switch (opcao1) {
                             case "1":
-
+                                if (contC < MAXC){
+                                    nomeC = JOptionPane.showInputDialog("Introduza seu nome: ");
+                                    cpfC = JOptionPane.showInputDialog("Introduza seu cpf: ");
+                                    c[contC] = new Cliente(cpfC, nomeC);
+                                    contC++;
+                                }
                                 break;
                             case "2":
-
+                                if (contP < MAXP){
+                                    descricaoP = JOptionPane.showInputDialog("Introduza uma descricao do produto: ");
+                                    codigoP = JOptionPane.showInputDialog("Introduza o codigo do produto: ");
+                                    valorP = Float.parseFloat(JOptionPane.showInputDialog("Introduza o valor do produto: "));
+                                    tipoP = JOptionPane.showInputDialog("Introduza o tipo do produto (NACIONAL ou IMPORTADO): ");
+                                    if (tipoP.equals("NACIONAL")){
+                                        taxaImport = Integer.parseInt(JOptionPane.showInputDialog("Introduza a taxa de impotacao (em %): "));
+                                        p[contP] = new ProdutoNacional(codigoP, descricaoP, valorP, tipoP, taxaImport);
+                                        contP++;
+                                    }
+                                 
+                                }
                                 break;
                         }
                     } while (!opcao1.equals("3"));

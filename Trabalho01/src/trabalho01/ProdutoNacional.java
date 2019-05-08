@@ -10,10 +10,13 @@ package trabalho01;
  * @author Erick Yoshike
  */
 public class ProdutoNacional extends Produto{
-    private float taxaImposto;
     
-    public ProdutoNacional(String codigo, String descricao, float valor, float taxaImposto){
+    private String tipoProduto;
+    private int taxaImposto;
+    
+    public ProdutoNacional(String codigo, String descricao, float valor, String tipoProduto, int taxaImposto){
         super(codigo, descricao, valor);
+        this.tipoProduto = tipoProduto;
         this.taxaImposto = taxaImposto;
     }
     
@@ -22,12 +25,20 @@ public class ProdutoNacional extends Produto{
         float preco = valor + ((valor * taxaImposto) / 100);
         return preco;
     }
+    
+    public String getTipoProduto() {
+        return tipoProduto;
+    }
 
-    public float getTaxaImposto() {
+    public void setTipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+    
+    public int getTaxaImposto() {
         return taxaImposto;
     }
 
-    public void setTaxaImposto(float taxaImposto) {
+    public void setTaxaImposto(int taxaImposto) {
         this.taxaImposto = taxaImposto;
     }
     

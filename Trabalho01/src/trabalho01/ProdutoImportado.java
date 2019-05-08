@@ -10,11 +10,14 @@ package trabalho01;
  * @author Erick Yoshike
  */
 public class ProdutoImportado extends Produto{
-    private float taxaImposto;
-    private float taxaImportacao;
     
-    public ProdutoImportado(String codigo, String descricao, float valor, float taxaImposto, float taxaImportacao){
+    private String tipoProduto;
+    private int taxaImposto;
+    private int taxaImportacao;
+    
+    public ProdutoImportado(String codigo, String descricao, float valor, String tipoProduto, int taxaImposto, int taxaImportacao){
         super(codigo, descricao, valor);
+        this.tipoProduto = tipoProduto;
         this.taxaImposto = taxaImposto;
         this.taxaImportacao = taxaImportacao;
     }
@@ -25,19 +28,27 @@ public class ProdutoImportado extends Produto{
         return preco;
     }
 
-    public float getTaxaImposto() {
+    public String getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+    
+    public int getTaxaImposto() {
         return taxaImposto;
     }
 
-    public void setTaxaImposto(float taxaImposto) {
+    public void setTaxaImposto(int taxaImposto) {
         this.taxaImposto = taxaImposto;
     }
 
-    public float getTaxaImportacao() {
+    public int getTaxaImportacao() {
         return taxaImportacao;
     }
 
-    public void setTaxaImportacao(float taxaImportacao) {
+    public void setTaxaImportacao(int taxaImportacao) {
         this.taxaImportacao = taxaImportacao;
     }
     
