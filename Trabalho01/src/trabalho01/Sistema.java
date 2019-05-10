@@ -48,7 +48,7 @@ public class Sistema {
 
     public void executar() {
         String opcao, opcao1, nomeC, cpfC, codigoP, descricaoP, tipoP;
-        int contC = 0, contP = 0, taxaImposto = 0, taxaImport = 0;
+        int contC = 0, contP = 0, taxaImposto = 0, taxaImport = 0,i=0;
         float valorP = 0;
         Cliente c[] = new Cliente[MAXC];
         Produto p[] = new Produto[MAXP];
@@ -92,7 +92,14 @@ public class Sistema {
                     break;
 
                 case "2":
-
+                    JOptionPane.showMessageDialog(null,"clientes: \n");
+                    String d;
+                    String nome;
+                   while (i< contC){
+                  
+                  JOptionPane.showMessageDialog(null,i + c[i].getNome() );
+                  i++;
+                   }
                     break;
 
                 case "3":

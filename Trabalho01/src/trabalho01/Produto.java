@@ -13,6 +13,7 @@ public abstract class Produto {
 
     protected String codigo;
     protected String descricao;
+    protected String nome;
     protected float valor;
 
     public Produto(String codigo, String descricao, float valor) {
