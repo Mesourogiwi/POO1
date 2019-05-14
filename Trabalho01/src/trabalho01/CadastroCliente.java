@@ -11,7 +11,11 @@ import javax.swing.JOptionPane;
  *
  * @author Guga
  */
+
 public class CadastroCliente extends javax.swing.JFrame {
+    
+    public static Cliente cl[] = new Cliente[100];
+    private static int i;
 
     /**
      * Creates new form CadastroCliente
@@ -52,14 +56,12 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        txtCpf.setText("000.000.00-00");
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
             }
         });
 
-        txtNome.setText("textField1");
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
@@ -90,15 +92,18 @@ public class CadastroCliente extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(106, 106, 106))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(85, 85, 85))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                        .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btSalvar)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(85, 85, 85))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(63, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +143,22 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "salvo com sucesso");
+        if (txtNome.getText() == null  ||txtNome.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o nome do cliente antes de salvar!!");
+            txtNome.requestFocus();
+        }
+        else if (txtCpf.getText() == null || txtCpf.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o cpf do cliente antes de salvar!!");
+            txtCpf.requestFocus();
+        }
+        else{
+            cl[i] = new Cliente (txtNome.getText(), txtCpf.getText());
+            JOptionPane.showMessageDialog(this, "Salvo com sucesso");
+            txtNome.setText("");
+            txtCpf.setText("");
+            i++;
+        }
+        
        
     }//GEN-LAST:event_btSalvarActionPerformed
 
