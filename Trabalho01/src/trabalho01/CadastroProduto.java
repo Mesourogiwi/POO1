@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class CadastroProduto extends javax.swing.JFrame {
     public static Produto pr[] = new Produto[100];
-    public static int i;
+    public static int j;
     private int cont;
 
     /**
@@ -218,7 +218,7 @@ public class CadastroProduto extends javax.swing.JFrame {
             if(ckbImport.isSelected() == false) {
                 txtImport.setVisible(false);
                 jLabel6.setVisible(false);
-                pr[i] = new ProdutoNacional(txtCod.getText(), txtNome.getText(), 
+                pr[j] = new ProdutoNacional(txtCod.getText(), txtNome.getText(), 
                         Float.parseFloat(txtPreco.getText()), "Nacional", 
                         Float.parseFloat(txtImposto.getText()));
                 JOptionPane.showMessageDialog(this, "Salvo com sucesso");
@@ -226,7 +226,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 txtCod.setText("");
                 txtPreco.setText("");
                 txtImposto.setText("");
-                i++;
+                j++;
             }
             else {
                 txtImport.setVisible(true);
@@ -236,7 +236,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                     txtImport.requestFocus();
                 }
                 else {
-                    pr[i] = new ProdutoImportado(txtCod.getText(), txtNome.getText(), 
+                    pr[j] = new ProdutoImportado(txtCod.getText(), txtNome.getText(), 
                         Float.parseFloat(txtPreco.getText()), "Importado", 
                         Float.parseFloat(txtImposto.getText()), 
                         Float.parseFloat(txtImport.getText()));
@@ -246,7 +246,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                     txtPreco.setText("");
                     txtImposto.setText("");
                     txtImport.setText("");
-                    i++;
+                    j++;
                     
                 }
             }
