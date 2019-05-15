@@ -40,7 +40,7 @@ public class ProdutoImportado extends Produto{
         return taxaImposto;
     }
 
-    public void setTaxaImposto(int taxaImposto) {
+    public void setTaxaImposto(float taxaImposto) {
         this.taxaImposto = taxaImposto;
     }
 
@@ -48,7 +48,7 @@ public class ProdutoImportado extends Produto{
         return taxaImportacao;
     }
 
-    public void setTaxaImportacao(int taxaImportacao) {
+    public void setTaxaImportacao(float taxaImportacao) {
         this.taxaImportacao = taxaImportacao;
     }
     

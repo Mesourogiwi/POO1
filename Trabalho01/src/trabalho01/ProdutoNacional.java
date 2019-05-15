@@ -47,7 +47,7 @@ public class ProdutoNacional extends Produto{
         return taxaImposto;
     }
 
-    public void setTaxaImposto(int taxaImposto) {
+    public void setTaxaImposto(float taxaImposto) {
         this.taxaImposto = taxaImposto;
     }
     
