@@ -197,8 +197,50 @@ public class MenuInicial extends javax.swing.JFrame {
                cl[i].setCpf(Cpf);
                cl[i].setNome(Nome);
                i++;
+            }   
+                cliente.close();
             }
-            cliente.close();
+            catch(IOException e){
+            }
+            
+        try {
+            BufferedReader produton = new BufferedReader(new FileReader("produton.txt"));
+            while(produton.ready()){
+               String Cod = produton.readLine();
+               String Nome = produton.readLine();
+               float preco = Float.parseFloat(produton.readLine());
+               String Tipo = produton.readLine();
+               float taxa = Float.parseFloat(produton.readLine());
+               prn[j].setCodigo(Cod);
+               prn[j].setDescricao(Nome);
+               prn[j].setValor(preco);
+               prn[j].setTipoProduto(Tipo);
+               prn[j].setTaxaImposto(taxa);
+               j++;
+            }
+            produton.close();
+        }
+        catch(IOException e){
+        }
+        
+        try {
+            BufferedReader produtoi = new BufferedReader(new FileReader("produtoi.txt"));
+            while(produtoi.ready()){
+               String Cod = produtoi.readLine();
+               String Nome = produtoi.readLine();
+               float preco = Float.parseFloat(produtoi.readLine());
+               String Tipo = produtoi.readLine();
+               float taxa = Float.parseFloat(produtoi.readLine());
+               float imports = Float.parseFloat(produtoi.readLine());
+               pri[k].setCodigo(Cod);
+               pri[k].setDescricao(Nome);
+               pri[k].setValor(preco);
+               pri[k].setTipoProduto(Tipo);
+               pri[k].setTaxaImposto(taxa);
+               pri[k].setTaxaImportacao(imports);
+               k++;
+            }
+            produtoi.close();
         }
         catch(IOException e){
         }
