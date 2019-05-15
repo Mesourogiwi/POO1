@@ -38,8 +38,18 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
         jLabel1.setText("Relatorios Produtos");
 
         pGeral.setText("Produtos Geral");
+        pGeral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pGeralActionPerformed(evt);
+            }
+        });
 
         pEspecifico.setText("Produto Especifico");
+        pEspecifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pEspecificoActionPerformed(evt);
+            }
+        });
 
         rVoltar.setText("Voltar");
         rVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -55,9 +65,9 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(pGeral)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(pEspecifico)
-                .addGap(41, 41, 41))
+                .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -71,15 +81,15 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pGeral)
                     .addComponent(pEspecifico))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(rVoltar)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -91,6 +101,20 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_rVoltarActionPerformed
+
+    private void pGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pGeralActionPerformed
+        ProdutosGeral form2 = new ProdutosGeral();
+        form2.setVisible(true);
+
+        dispose();
+    }//GEN-LAST:event_pGeralActionPerformed
+
+    private void pEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pEspecificoActionPerformed
+        ProdutoEspecifico form2 = new ProdutoEspecifico();
+        form2.setVisible(true);
+
+        dispose();
+    }//GEN-LAST:event_pEspecificoActionPerformed
 
     /**
      * @param args the command line arguments

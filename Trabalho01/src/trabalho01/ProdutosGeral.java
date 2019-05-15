@@ -5,23 +5,41 @@
  */
 package trabalho01;
 
-import static trabalho01.CadastroCliente.cl;
-import static trabalho01.CadastroCliente.i;
+import static trabalho01.CadastroProduto.prn;
+import static trabalho01.CadastroProduto.j;
+import static trabalho01.CadastroProduto.pri;
+import static trabalho01.CadastroProduto.k;
 /**
  *
  * @author Erick Yoshike
  */
-public class ClientesGeral extends javax.swing.JFrame {
+public class ProdutosGeral extends javax.swing.JFrame {
 
     /**
-     * Creates new form ClientesGeral
+     * Creates new form ProdutosGeral
      */
-    public ClientesGeral() {
+    public ProdutosGeral() {
         initComponents();
-        for (int j = 0; j < i; j++) {
-            textArea.append("Nome: " + cl[j].getNome() + "\n" 
-                          + "CPF: " + cl[j].getCpf() + "\n");
-            textArea.append("-------------------------\n");
+        textArea.append("Produtos Nacionais:\n");
+        textArea.append("-------------------------------\n");
+        for (int i = 0; i < j; i++) {
+            textArea.append("Nome: " + prn[i].getDescricao() + "\n" 
+                          + "Codigo: " + prn[i].getCodigo() + "\n"
+                          + "Valor Bruto: " + prn[i].getValor() + "\n"
+                          + "Taxa Imposto (%): " + prn[i].getTaxaImposto() + "\n"
+                          + "Valor Final: " + prn[i].calcularPreco() + "\n");
+            textArea.append("-------------------------------\n");
+        }
+        textArea.append("Produtos Importados:\n");
+        textArea.append("-------------------------------\n");
+        for (int i = 0; i < k; i++) {
+            textArea.append("Nome: " + pri[i].getDescricao() + "\n" 
+                          + "Codigo: " + pri[i].getCodigo() + "\n"
+                          + "Valor Bruto: " + pri[i].getValor() + "\n"
+                          + "Taxa Imposto (%): " + pri[i].getTaxaImposto() + "\n"
+                          + "Taxa Importacao (%): " + pri[i].getTaxaImportacao() + "\n"
+                          + "Valor Final: " + pri[i].calcularPreco() + "\n");
+            textArea.append("-------------------------------\n");
         }
     }
 
@@ -34,19 +52,19 @@ public class ClientesGeral extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
         bVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Produtos Geral");
+
         textArea.setColumns(20);
         textArea.setRows(5);
         jScrollPane1.setViewportView(textArea);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Clientes Geral");
 
         bVoltar.setText("Voltar");
         bVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -67,22 +85,22 @@ public class ClientesGeral extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(138, 138, 138)
+                                .addGap(127, 127, 127)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(bVoltar)))
-                        .addGap(0, 125, Short.MAX_VALUE)))
+                        .addGap(0, 127, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bVoltar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -91,7 +109,7 @@ public class ClientesGeral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarActionPerformed
-        RelatoriosClientes form2 = new RelatoriosClientes();
+        RelatoriosProdutos form2 = new RelatoriosProdutos();
         form2.setVisible(true);
 
         dispose();
@@ -114,20 +132,20 @@ public class ClientesGeral extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientesGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientesGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientesGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientesGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientesGeral().setVisible(true);
+                new ProdutosGeral().setVisible(true);
             }
         });
     }
