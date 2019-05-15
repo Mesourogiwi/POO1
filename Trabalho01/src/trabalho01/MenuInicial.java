@@ -244,6 +244,8 @@ public class MenuInicial extends javax.swing.JFrame {
         }
         catch(IOException e){
         }
+        
+        JOptionPane.showMessageDialog(null, "Dados carregados com sucesso");
     }//GEN-LAST:event_BtCarregarActionPerformed
 
     /**
