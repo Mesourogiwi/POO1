@@ -194,16 +194,11 @@ public class MenuInicial extends javax.swing.JFrame {
             while(cliente.ready()){
                String Cpf = cliente.readLine();
                String Nome = cliente.readLine();
-               cl[i].setCpf(Cpf);
-               cl[i].setNome(Nome);
+               cl[i] = new Cliente (Cpf, Nome);
                i++;
             }   
                 cliente.close();
-            }
-            catch(IOException e){
-            }
-            
-        try {
+          
             BufferedReader produton = new BufferedReader(new FileReader("produton.txt"));
             while(produton.ready()){
                String Cod = produton.readLine();
@@ -211,19 +206,11 @@ public class MenuInicial extends javax.swing.JFrame {
                float preco = Float.parseFloat(produton.readLine());
                String Tipo = produton.readLine();
                float taxa = Float.parseFloat(produton.readLine());
-               prn[j].setCodigo(Cod);
-               prn[j].setDescricao(Nome);
-               prn[j].setValor(preco);
-               prn[j].setTipoProduto(Tipo);
-               prn[j].setTaxaImposto(taxa);
+               prn[j] = new ProdutoNacional(Cod, Nome, preco, Tipo, taxa);
                j++;
             }
             produton.close();
-        }
-        catch(IOException e){
-        }
-        
-        try {
+
             BufferedReader produtoi = new BufferedReader(new FileReader("produtoi.txt"));
             while(produtoi.ready()){
                String Cod = produtoi.readLine();
@@ -232,17 +219,14 @@ public class MenuInicial extends javax.swing.JFrame {
                String Tipo = produtoi.readLine();
                float taxa = Float.parseFloat(produtoi.readLine());
                float imports = Float.parseFloat(produtoi.readLine());
-               pri[k].setCodigo(Cod);
-               pri[k].setDescricao(Nome);
-               pri[k].setValor(preco);
-               pri[k].setTipoProduto(Tipo);
-               pri[k].setTaxaImposto(taxa);
-               pri[k].setTaxaImportacao(imports);
+               pri[k] = new ProdutoImportado(Cod, Nome, preco, Tipo, taxa, imports);
                k++;
             }
             produtoi.close();
-        }
-        catch(IOException e){
+    }
+            
+        catch(IOException f){
+            f.printStackTrace();
         }
         
         JOptionPane.showMessageDialog(null, "Dados carregados com sucesso");
