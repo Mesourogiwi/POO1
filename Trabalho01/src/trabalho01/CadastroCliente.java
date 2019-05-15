@@ -152,7 +152,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             txtCpf.requestFocus();
         }
         else{
-            cl[i] = new Cliente (txtNome.getText(), txtCpf.getText());
+            cl[i] = new Cliente (txtCpf.getText(), txtNome.getText());
             JOptionPane.showMessageDialog(this, "Salvo com sucesso");
             txtNome.setText("");
             txtCpf.setText("");
