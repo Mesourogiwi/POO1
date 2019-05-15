@@ -9,6 +9,21 @@ package trabalho01;
  *
  * @author Guga
  */
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
+import static trabalho01.CadastroCliente.i;
+import static trabalho01.CadastroCliente.cl;
+import static trabalho01.CadastroProduto.prn;
+import static trabalho01.CadastroProduto.pri;
+import static trabalho01.CadastroProduto.j;
+import static trabalho01.CadastroProduto.k;
+
 public class MenuInicial extends javax.swing.JFrame {
 
     /**
@@ -59,8 +74,18 @@ public class MenuInicial extends javax.swing.JFrame {
         });
 
         BtSalvar.setText("Salvar");
+        BtSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSalvarActionPerformed(evt);
+            }
+        });
 
         BtCarregar.setText("Carregar");
+        BtCarregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtCarregarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Menu Inicial");
 
@@ -126,6 +151,61 @@ public class MenuInicial extends javax.swing.JFrame {
     private void BtRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRelatorioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtRelatorioActionPerformed
+     
+    private void BtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalvarActionPerformed
+        try {
+            if(i!=0) {
+                BufferedWriter cliente = new BufferedWriter(new FileWriter("cliente.txt", true));
+                for (int l=0; l<i; l++) {
+                    cliente.append(cl[l].getCpf() + "\n");
+                    cliente.append(cl[l].getNome() + "\n");
+                }
+                cliente.close();
+            }
+            if (j!=0) {
+                BufferedWriter produton = new BufferedWriter(new FileWriter("produton.txt", true));
+                for (int l=0; l<j; l++) {
+                    produton.append(prn[l].getCodigo() + "\n");
+                    produton.append(prn[l].getDescricao() + "\n");
+                    produton.append(prn[l].getValor() + "\n");
+                    produton.append(prn[l].getTipoProduto()+ "\n");
+                    produton.append(prn[l].getTaxaImposto()+ "\n");
+                }
+                produton.close();
+            }
+            if (k!=0) {
+                BufferedWriter produtoi = new BufferedWriter(new FileWriter("produtoi.txt", true));
+                for (int l=0; l<k; l++) {
+                    produtoi.append(pri[l].getCodigo() + "\n");
+                    produtoi.append(pri[l].getDescricao() + "\n");
+                    produtoi.append(pri[l].getValor() + "\n");
+                    produtoi.append(pri[l].getTipoProduto()+ "\n");
+                    produtoi.append(pri[l].getTaxaImposto()+ "\n");
+                }
+                produtoi.close();
+            }
+            JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!!");
+        }
+        catch(IOException io){
+        }
+        
+    }//GEN-LAST:event_BtSalvarActionPerformed
+
+    private void BtCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCarregarActionPerformed
+        try {
+            BufferedReader cliente = new BufferedReader(new FileReader("cliente.txt"));
+            while(cliente.ready()){
+               String Cpf = cliente.readLine();
+               String Nome = cliente.readLine();
+               cl[i].setCpf(Cpf);
+               cl[i].setNome(Nome);
+               i++;
+            }
+            cliente.close();
+        }
+        catch(IOException e){
+        }
+    }//GEN-LAST:event_BtCarregarActionPerformed
 
     /**
      * @param args the command line arguments
