@@ -12,9 +12,18 @@ package trabalho01;
 public class ProdutoNacional extends Produto{
     
     private String tipoProduto;
-    private int taxaImposto;
+    private float taxaImposto;
     
-    public ProdutoNacional(String codigo, String descricao, float valor, String tipoProduto, int taxaImposto){
+    /**
+     *
+     * @param codigo
+     * @param descricao
+     * @param valor
+     * @param tipoProduto
+     * @param taxaImposto
+     */
+    
+    public ProdutoNacional(String codigo, String descricao, float valor, String tipoProduto, float taxaImposto){
         super(codigo, descricao, valor);
         this.tipoProduto = tipoProduto;
         this.taxaImposto = taxaImposto;
@@ -34,7 +43,7 @@ public class ProdutoNacional extends Produto{
         this.tipoProduto = tipoProduto;
     }
     
-    public int getTaxaImposto() {
+    public float getTaxaImposto() {
         return taxaImposto;
     }
 

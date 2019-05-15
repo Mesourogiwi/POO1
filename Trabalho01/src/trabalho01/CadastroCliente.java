@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class CadastroCliente extends javax.swing.JFrame {
     
     public static Cliente cl[] = new Cliente[100];
-    private static int i;
+    public static int i;
 
     /**
      * Creates new form CadastroCliente
