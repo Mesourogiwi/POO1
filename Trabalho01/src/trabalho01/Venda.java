@@ -11,6 +11,7 @@ import java.util.Calendar;
  *
  * @author Guga
  */
+
 public class Venda {
     private int nCompra;
     private Cliente cliente;
@@ -19,12 +20,12 @@ public class Venda {
     int l;
     private Calendar data;     
 
-     Venda(int numero,Cliente cliente,Produto prod,int i, TipoPagamento tipopgto ) {
+     Venda(int numero,Cliente cliente,Produto prod,TipoPagamento tipopgto ) {
         this.nCompra = numero;
         this.cliente = cliente;
         this.produto[l] = prod;
        
-        this.tipoPgto[i]= tipopgto;
+        this.tipoPgto[l]= tipopgto;
     }
 
     public int getNumero() {
