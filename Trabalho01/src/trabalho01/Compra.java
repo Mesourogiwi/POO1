@@ -17,6 +17,7 @@ import static trabalho01.CadastroProduto.j;
 import static trabalho01.CadastroProduto.prn;
 import static trabalho01.CadastroProduto.pri;
 import static trabalho01.CadastroProduto.k;
+
 public class Compra extends javax.swing.JFrame {
     public static Venda venda[] = new Venda[100];
     public static int l;
@@ -245,14 +246,14 @@ public class Compra extends javax.swing.JFrame {
                 if(cheque!= null){
                  tipopgto="cheque";
                  Cheque  ch = new Cheque(tipopgto,nome,cheque);
-                  venda[l] = new Venda( l, cl[c],prn[contp],l,ch);
+                  venda[l] = new Venda( l, cl[c],prn[contp],ch);
                   JOptionPane.showMessageDialog(null, "Salvo com sucesso!!");
                   l++;
                 }
                 else if(cartao!= null){
                   tipopgto = "cartao";
                   Cartao  ct = new Cartao(tipopgto,nome,cartao);
-                  venda[l] = new Venda( l, cl[c],pri[contp],l,ct);
+                  venda[l] = new Venda(l, cl[c],pri[contp],ct);
                   JOptionPane.showMessageDialog(null, "Salvo com sucesso!!");
                   l++;
                 }
@@ -271,14 +272,14 @@ public class Compra extends javax.swing.JFrame {
                    if(cheque!= null){
                  tipopgto="cheque";
                  Cheque  ch = new Cheque(tipopgto,nome,cheque);
-                  venda[l] = new Venda( l, cl[c],prn[contp],l,ch);
+                  venda[l] = new Venda( l, cl[c],prn[contp],ch);
                   JOptionPane.showMessageDialog(null, "Salvo com sucesso!!");
                   l++;
                 }
                 else if(cartao!= null){
                   tipopgto = "cartao";
                   Cartao  ct = new Cartao(tipopgto,nome,cartao);
-                  venda[l] = new Venda( l, cl[c],pri[contp],l,ct);
+                  venda[l] = new Venda(l, cl[c],pri[contp],ct);
                   l++;
                   JOptionPane.showMessageDialog(null, "Salvo com sucesso!!");
                 }
