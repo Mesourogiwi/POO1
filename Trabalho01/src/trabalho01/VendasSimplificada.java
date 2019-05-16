@@ -5,17 +5,25 @@
  */
 package trabalho01;
 
+import static trabalho01.Compra.venda;
+import static trabalho01.Compra.l;
 /**
  *
  * @author Erick Yoshike
  */
-public class RelatoriosProdutos extends javax.swing.JFrame {
+public class VendasSimplificada extends javax.swing.JFrame {
 
     /**
-     * Creates new form RelatoriosProdutos
+     * Creates new form VendasSimplificada
      */
-    public RelatoriosProdutos() {
+    int numero;
+    public VendasSimplificada() {
         initComponents();
+        
+       for( int j = 0; j < l; j++){
+            
+            pGeral.addItem(venda[j].getNumero());
+       }
     }
 
     /**
@@ -28,35 +36,28 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        pGeral = new javax.swing.JButton();
-        pEspecifico = new javax.swing.JButton();
-        rVoltar = new javax.swing.JButton();
+        pGeral = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
+        vVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Relatorios Produtos");
+        jLabel1.setText("Vendas Simplificadas");
 
-        pGeral.setText("Produtos Geral");
+        pGeral.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o tipo de pagamento" }));
         pGeral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pGeralActionPerformed(evt);
             }
         });
 
-        pEspecifico.setText("Produto Especifico");
-        pEspecifico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pEspecificoActionPerformed(evt);
-            }
-        });
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        jScrollPane1.setViewportView(textArea);
 
-        rVoltar.setText("Voltar");
-        rVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rVoltarActionPerformed(evt);
-            }
-        });
+        vVoltar.setText("Voltar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,57 +66,51 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pEspecifico)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(pGeral))
+                                .addGap(100, 100, 100)
+                                .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(rVoltar)))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addComponent(pGeral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 99, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(vVoltar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(pGeral)
-                .addGap(12, 12, 12)
-                .addComponent(pEspecifico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rVoltar)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pGeral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(vVoltar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rVoltarActionPerformed
-        Relatorios form2 = new Relatorios();
-        form2.setVisible(true);
-
-        dispose();
-    }//GEN-LAST:event_rVoltarActionPerformed
-
     private void pGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pGeralActionPerformed
-        ProdutosGeral form2 = new ProdutosGeral();
-        form2.setVisible(true);
-
-        dispose();
+        for (int a = 0; a < l; a++){
+           
+            if (((String)pGeral.getSelectedItem()).equals(venda[a].getNumero()))
+           textArea.append("Número da nota fiscal: " + venda[a].getNumero()+ "\n"
+                         + "Nome do cliente: " + venda[a].getCliente() + "\n"
+                         + "Produtos comprados: " + venda[a].getProduto() + "\n"
+                         + "Tipo pagamento: " + venda[a].getTipoPgto() + "\n"
+                         + "-------------------------\n");
+        }
     }//GEN-LAST:event_pGeralActionPerformed
-
-    private void pEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pEspecificoActionPerformed
-        ProdutoEspecifico form2 = new ProdutoEspecifico();
-        form2.setVisible(true);
-
-        dispose();
-    }//GEN-LAST:event_pEspecificoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,28 +129,29 @@ public class RelatoriosProdutos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RelatoriosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendasSimplificada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RelatoriosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendasSimplificada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RelatoriosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendasSimplificada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RelatoriosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendasSimplificada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RelatoriosProdutos().setVisible(true);
+                new VendasSimplificada().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton pEspecifico;
-    private javax.swing.JButton pGeral;
-    private javax.swing.JButton rVoltar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> pGeral;
+    private javax.swing.JTextArea textArea;
+    private javax.swing.JButton vVoltar;
     // End of variables declaration//GEN-END:variables
 }

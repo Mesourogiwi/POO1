@@ -14,26 +14,28 @@ import java.io.Serializable;
  */
 
 public class Venda implements Serializable{
-    private int nCompra;
+    private String nCompra;
     private Cliente cliente;
     private Produto produto[] = new Produto[100];
     private TipoPagamento tipoPgto[] = new TipoPagamento[100];
-    int l;
+    private float valortotal;
+     int i;
     private Calendar data;     
 
-     Venda(int numero,Cliente cliente,Produto prod,TipoPagamento tipopgto ) {
+     Venda(String numero,Cliente cliente,Produto prod,TipoPagamento tipopgto,int l, float valor ) {
         this.nCompra = numero;
         this.cliente = cliente;
-        this.produto[l] = prod;
-       
-        this.tipoPgto[l]= tipopgto;
+        this.produto[i] = prod;
+        this.tipoPgto[i]= tipopgto;
+        this.valortotal = valor;
+        i++;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return nCompra;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.nCompra = numero;
     }
 
@@ -59,6 +61,14 @@ public class Venda implements Serializable{
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public float getValortotal() {
+        return valortotal;
+    }
+
+    public void setValortotal(float valortotal) {
+        this.valortotal = valortotal;
     }
     
 }

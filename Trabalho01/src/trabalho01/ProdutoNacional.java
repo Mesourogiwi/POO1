@@ -9,7 +9,9 @@ package trabalho01;
  *
  * @author Erick Yoshike
  */
-public class ProdutoNacional extends Produto{
+import java.io.Serializable;
+
+public class ProdutoNacional extends Produto implements Serializable{
     
     private String tipoProduto;
     private float taxaImposto;

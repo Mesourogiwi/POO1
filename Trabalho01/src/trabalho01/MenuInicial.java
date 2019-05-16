@@ -12,9 +12,15 @@ package trabalho01;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 import static trabalho01.CadastroCliente.i;
@@ -23,8 +29,10 @@ import static trabalho01.CadastroProduto.prn;
 import static trabalho01.CadastroProduto.pri;
 import static trabalho01.CadastroProduto.j;
 import static trabalho01.CadastroProduto.k;
+import static trabalho01.Compra.venda;
+import static trabalho01.Compra.l;
 
-public class MenuInicial extends javax.swing.JFrame {
+public class MenuInicial extends javax.swing.JFrame{
 
     /**
      * Creates new form MenuInicial
@@ -152,81 +160,92 @@ public class MenuInicial extends javax.swing.JFrame {
     private void BtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalvarActionPerformed
         try {
             if(i!=0) {
-                BufferedWriter cliente = new BufferedWriter(new FileWriter("cliente.txt", true));
-                for (int l=0; l<i; l++) {
-                    cliente.append(cl[l].getCpf() + "\n");
-                    cliente.append(cl[l].getNome() + "\n");
+                FileOutputStream cliente = new FileOutputStream("cliente.dat");
+                ObjectOutputStream ocliente = new ObjectOutputStream(cliente);
+                for(int j=0; j<i;j++){
+                    ocliente.writeObject(cl[j]);
                 }
-                cliente.close();
+                ocliente.flush();
+                ocliente.close();
+                ocliente.flush();
+                ocliente.close();
             }
             if (j!=0) {
-                BufferedWriter produton = new BufferedWriter(new FileWriter("produton.txt", true));
-                for (int l=0; l<j; l++) {
-                    produton.append(prn[l].getCodigo() + "\n");
-                    produton.append(prn[l].getDescricao() + "\n");
-                    produton.append(prn[l].getValor() + "\n");
-                    produton.append(prn[l].getTipoProduto()+ "\n");
-                    produton.append(prn[l].getTaxaImposto()+ "\n");
+                FileOutputStream produton = new FileOutputStream("produton.dat");
+                ObjectOutputStream oproduton = new ObjectOutputStream(produton);
+                for(int i=0; i<j;i++){
+                    oproduton.writeObject(prn[i]);
                 }
-                produton.close();
+                oproduton.flush();
+                oproduton.close();
+                oproduton.flush();
+                oproduton.close();
             }
             if (k!=0) {
-                BufferedWriter produtoi = new BufferedWriter(new FileWriter("produtoi.txt", true));
-                for (int l=0; l<k; l++) {
-                    produtoi.append(pri[l].getCodigo() + "\n");
-                    produtoi.append(pri[l].getDescricao() + "\n");
-                    produtoi.append(pri[l].getValor() + "\n");
-                    produtoi.append(pri[l].getTipoProduto()+ "\n");
-                    produtoi.append(pri[l].getTaxaImposto()+ "\n");
+                FileOutputStream produtoi = new FileOutputStream("produtoi.dat");
+                ObjectOutputStream oprodutoi = new ObjectOutputStream(produtoi);
+                for(int i=0; i<k;i++){
+                    oprodutoi.writeObject(pri[i]);
                 }
-                produtoi.close();
+                oprodutoi.flush();
+                oprodutoi.close();
+                oprodutoi.flush();
+                oprodutoi.close();
+            }
+            if(l!=0) {
+                FileOutputStream vendas = new FileOutputStream("vendas.dat");
+                ObjectOutputStream ovendas = new ObjectOutputStream(vendas);
+                for(int i=0; i<l;i++){
+                    ovendas.writeObject(venda[i]);
+                }
+                ovendas.flush();
+                ovendas.close();
+                ovendas.flush();
+                ovendas.close();
             }
             JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!!");
         }
-        catch(IOException io){
+        catch(IOException e){
         }
         
     }//GEN-LAST:event_BtSalvarActionPerformed
 
     private void BtCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCarregarActionPerformed
         try {
-            BufferedReader cliente = new BufferedReader(new FileReader("cliente.txt"));
-            while(cliente.ready()){
-               String Cpf = cliente.readLine();
-               String Nome = cliente.readLine();
-               cl[i] = new Cliente (Cpf, Nome);
-               i++;
-            }   
-                cliente.close();
-          
-            BufferedReader produton = new BufferedReader(new FileReader("produton.txt"));
-            while(produton.ready()){
-               String Cod = produton.readLine();
-               String Nome = produton.readLine();
-               float preco = Float.parseFloat(produton.readLine());
-               String Tipo = produton.readLine();
-               float taxa = Float.parseFloat(produton.readLine());
-               prn[j] = new ProdutoNacional(Cod, Nome, preco, Tipo, taxa);
-               j++;
+            FileInputStream cliente = new FileInputStream("cliente.dat");
+            ObjectInputStream ocliente = new ObjectInputStream(cliente);
+            for(int j=0; j<i;j++){
+                cl[j] = (Cliente) ocliente.readObject();
             }
+            ocliente.close();
+            cliente.close();
+          
+            FileInputStream produton = new FileInputStream("produton.dat");
+            ObjectInputStream oproduton = new ObjectInputStream(produton);
+            for(int i=0; i<l;i++){
+                prn[i] = (ProdutoNacional) oproduton.readObject();
+            }
+            oproduton.close();
             produton.close();
 
-            BufferedReader produtoi = new BufferedReader(new FileReader("produtoi.txt"));
-            while(produtoi.ready()){
-               String Cod = produtoi.readLine();
-               String Nome = produtoi.readLine();
-               float preco = Float.parseFloat(produtoi.readLine());
-               String Tipo = produtoi.readLine();
-               float taxa = Float.parseFloat(produtoi.readLine());
-               float imports = Float.parseFloat(produtoi.readLine());
-               pri[k] = new ProdutoImportado(Cod, Nome, preco, Tipo, taxa, imports);
-               k++;
+            FileInputStream produtoi = new FileInputStream("produtoi.dat");
+            ObjectInputStream oprodutoi = new ObjectInputStream(produtoi);
+            for(int i=0; i<k;i++){
+                pri[i] = (ProdutoImportado) oprodutoi.readObject();
             }
+            oprodutoi.close();
             produtoi.close();
+            
+            FileInputStream vendas = new FileInputStream("vendas.dat");
+            ObjectInputStream ovendas = new ObjectInputStream(vendas);
+            for(int i=0; i<l;i++){
+                venda[i] = (Venda) ovendas.readObject();
+            }
+            ovendas.close();
+            vendas.close();
     }
             
-        catch(IOException f){
-            f.printStackTrace();
+        catch(ClassNotFoundException | IOException e){
         }
         
         JOptionPane.showMessageDialog(null, "Dados carregados com sucesso");

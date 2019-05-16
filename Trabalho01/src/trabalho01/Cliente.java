@@ -9,7 +9,9 @@ package trabalho01;
  *
  * @author Erick Yoshike
  */
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable{
 
     private String cpf;
     private String nome;
