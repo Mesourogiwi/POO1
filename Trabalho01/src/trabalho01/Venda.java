@@ -6,13 +6,14 @@
 package trabalho01;
 
 import java.util.Calendar;
+import java.io.Serializable;
 
 /**
  *
  * @author Guga
  */
 
-public class Venda {
+public class Venda implements Serializable{
     private int nCompra;
     private Cliente cliente;
     private Produto produto[] = new Produto[100];
